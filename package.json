@@ -1,6 +1,6 @@
 {
   "name": "dynamodb",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Simple DynamoDB Library for Node.js",
   "keywords": ["dynamo", "node", "db", "aws", "amazon"],
   "homepage": "https://github.com/spolu/node-dynamodb",
