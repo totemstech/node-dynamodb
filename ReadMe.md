@@ -21,8 +21,8 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
 
 ## Usage
 
-    var ddb = require('../lib/ddb.js').ddb({ accessKeyId: '',
-                                             secretAccessKey: '' });
+    var ddb = require('dynamodb').ddb({ accessKeyId: '',
+                                        secretAccessKey: '' });
     
     ddb.listTables({}, function(err, res) {});
     // res: ['test','foo','bar']
