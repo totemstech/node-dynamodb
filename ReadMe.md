@@ -50,3 +50,4 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
 
     ddb.consumedCapacity();
 
+More complete usage can be found in the examples directory
