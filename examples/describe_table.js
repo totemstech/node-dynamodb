@@ -22,7 +22,7 @@
 /**
  * describe_table.js
  * 
- * Command: DescribeTables
+ * Command: DescribeTable
  * @param table [string] the table name
  * @param cb asynchronous callback:
  *                err:         [Error] if an error occured or null
@@ -34,7 +34,7 @@ var ddb = require('../lib/ddb.js').ddb({ accessKeyId:     'ACCESS_KEY_ID',
                                          secretAccessKey: 'SECRET_ACCESS_KEY' });
 
 
-ddb.describeTables('test', function(err, res) {
+ddb.describeTable('test', function(err, res) {
     if(err) 
       console.log(err);
     else {
