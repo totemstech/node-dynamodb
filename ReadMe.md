@@ -25,15 +25,27 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
                                              secretAccessKey: '' });
     
     ddb.listTables({}, function(err, res) {});
+    // res: ['test','foo','bar']
+
     ddb.describeTable('a-table', function(err, res) {});
+    // res: { ... }
 
     // flat string and number based json object
-    var item = { date: 304,
-                 sha:  'sha',
-                 user: 'spolu' };
+    var item = { score: 304,
+                 date: (new Date).getTime(),
+                 sha: '3d2d6963',
+                 usr: 'spolu',
+                 lng: ['node', 'c++'] };
     
     ddb.putItem('a-table', item, {}, function(err, res, cap) {});
-    ddb.getItem('a-table', 'sha', null, {}, function(err, res, cap) {});
+
+    ddb.getItem('a-table', '3d2d6963', null, {}, function(err, res, cap) {});
+    // res: { score: 304,
+    //        date: (new Date).getTime(),
+    //        sha: '3d2d6963',
+    //        usr: 'spolu',
+    //        lng: ['node', 'c++'] };
+
     ddb.deleteItem('a-table', 'sha', null, {}, function(err, res, cap) {});
 
     ddb.consumedCapacity();
