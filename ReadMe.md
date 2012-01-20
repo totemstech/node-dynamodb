@@ -30,7 +30,7 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
     ddb.describeTable('a-table', function(err, res) {});
     // res: { ... }
 
-    // flat string and number based json object
+    // flat [string, number or string array] based json object
     var item = { score: 304,
                  date: (new Date).getTime(),
                  sha: '3d2d6963',
