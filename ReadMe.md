@@ -2,8 +2,8 @@
 
 A DynamoDB driver for Node.js, with:
 
-- Syntaxic sweeteners to handle Amazon DynamoDB's JSON format in Node.
-- Efficient on-demand authentication and authentication refresh using Amazon STS
+- Syntactic sweeteners/mapping to handle Amazon DynamoDB's JSON format in NodeJS
+- Efficient and transparent authentication and authentication refresh using Amazon STS
 - Currently in production with more than 80 write/s, 60 read/s
 
 Discussion Group: http://groups.google.com/group/node-dynamodb
