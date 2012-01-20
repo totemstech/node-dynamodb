@@ -28,7 +28,7 @@
  *
  * Command: PutItem
  * @param table [string] the table name
- * @param item the item to put (string/number dictionary)
+ * @param item the item to put (string/number/string array/number array dictionary)
  * @param options the DynamoDB options for PutItem as a dictionary
  *                expected                A dictionary mapping attribute name
  *                                        to expected existence or value [see 
@@ -57,7 +57,7 @@ var ddb = require('../lib/ddb.js').ddb({ accessKeyId:     'ACCESS_KEY_ID',
 var item1 = { date: (new Date).getTime(),
               sha: '3d2d69633ffa5368c7971cf15c91d2eb',
               usr: 'spolu',
-              lng: ['js', 'c++'] };
+              val: [5, 6, 7] };
 
 // Simple
 
