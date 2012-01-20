@@ -56,7 +56,8 @@ var ddb = require('../lib/ddb.js').ddb({ accessKeyId:     'ACCESS_KEY_ID',
 
 var item1 = { date: (new Date).getTime(),
               sha: '3d2d69633ffa5368c7971cf15c91d2eb',
-              usr: 'spolu' };
+              usr: 'spolu',
+              lng: ['js', 'c++'] };
 
 // Simple
 
@@ -75,7 +76,8 @@ ddb.putItem('test', item1, {}, function(err, res, cap) {
 var item2 = { score: 304,
               date: (new Date).getTime(),
               sha: '3d2d69633ffa5368c7971cf15c91d2eb',
-              usr: 'spolu' };
+              usr: 'spolu',
+              lng: ['node', 'c++'] };
 
 var options = { expected: { score: { exists: false },
                             usr: { value: 'spolu', exists: true } },
