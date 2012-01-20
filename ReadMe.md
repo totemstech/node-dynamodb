@@ -1,8 +1,13 @@
 ## Basics
 
-Very early stage DynamoDB library for Node.js
+Early stage DynamoDB library for Node.js, with:
 
-Currently supports the following operations:
+- Syntaxic sweeteners to handle Amazon DynamoDB's JSON format in Node.
+- Efficient on-demand authentication and authentication refresh using Amazon STS
+- Currently in production with more than 80 write/s, 60 read/s
+
+
+Supports the following operations:
    
     ListTables
     DescribeTable
@@ -10,7 +15,8 @@ Currently supports the following operations:
     PutItem
     DeleteItem
 
-Authentication is made (and refreshed) on demand
+Any contribution is welcome! There's still a lot of work to be done on how to nicely
+map optional the complex syntax of DynamoDB optional aguments into node space!
 
 ## Usage
 
