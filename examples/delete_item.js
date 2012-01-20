@@ -87,7 +87,7 @@ var options = { expected: { score: { exists: false },
                             usr: { value: 'spolu', exists: true } },
                 returnValues: 'ALL_OLD' };
 
-ddb.putItem('test', '91d2eb', options, function(err, res, cap) {
+ddb.deleteItem('test', '91d2eb', null, options, function(err, res, cap) {
     if(err)
       console.log(err);
     else {
