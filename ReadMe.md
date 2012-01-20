@@ -16,7 +16,7 @@ Supports the following operations:
     DeleteItem
 
 Any contribution is welcome! There's still a lot of work to be done on how to nicely
-map optional the complex syntax of DynamoDB optional aguments into node space!
+map the rather complex syntax of DynamoDB optional aguments into node space!
 
 ## Usage
 
