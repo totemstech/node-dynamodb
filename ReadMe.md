@@ -32,7 +32,7 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
 
     // flat [string, number, string array or number array] based json object
     var item = { score: 304,
-                 date: (new Date).getTime(),
+                 date: 12301239823,
                  sha: '3d2d6963',
                  usr: 'spolu',
                  lng: ['node', 'c++'] };
