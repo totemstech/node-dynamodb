@@ -10,6 +10,7 @@ Discussion Group: http://groups.google.com/group/node-dynamodb
 
 Supports the following operations:
    
+    CreateTable
     ListTables
     DescribeTable
     GetItem
@@ -24,6 +25,7 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
     var ddb = require('dynamodb').ddb({ accessKeyId: '',
                                         secretAccessKey: '' });
     
+    ddb.createTable('foo', {hash: ['id', ddb.types.string], range: ['time', ddb.types.number]}, {read: 10, write: 10}, function(err, details){});
     ddb.listTables({}, function(err, res) {});
     // res: ['test','foo','bar']
 
