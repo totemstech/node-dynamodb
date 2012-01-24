@@ -39,7 +39,8 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
     //        "TableStatus":"CREATING" }
 
     ddb.listTables({}, function(err, res) {});
-    // res: ['test','foo','bar']
+    // res: { LastEvaluatedTableName: 'bar',
+              TableNames: ['test','foo','bar'] }
 
     ddb.describeTable('a-table', function(err, res) {});
     // res: { ... }
