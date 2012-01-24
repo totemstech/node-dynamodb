@@ -29,8 +29,9 @@
  *                                                 starts the list
  * @param cb asynchronous callback:
  *                err:                    [Error] if an error occured or null
- *                res:                    [Array] a string array containing the
- *                                                table names
+ *                res:                    [Object] containing the LastEvaluatedTableName
+ *                                                 value and a string array containing the
+ *                                                 table names
  */
 
 var ddb = require('../lib/ddb.js').ddb({ accessKeyId:     'ACCESS_KEY_ID',
