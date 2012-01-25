@@ -33,7 +33,7 @@ var ddb = require('../lib/ddb.js').ddb({ accessKeyId: '',
 secretAccessKey: '' });
 
 
-ddb.scan('test', function(err, res) {
+ddb.scan('test', null, function(err, res) {
     if(err) {
       console.log(err);
     } else {
