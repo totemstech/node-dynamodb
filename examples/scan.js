@@ -29,11 +29,11 @@
  * @param options the DynamoDB options for Scan as a dictionary
  */
 
-var ddb = require('../lib/ddb.js').ddb({ accessKeyId: '',
-secretAccessKey: '' });
+var ddb = require('../lib/ddb.js').ddb({ accessKeyId: 'AKIAJXLGMRSE6TJOA5ZQ',
+secretAccessKey: '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' });
 
 
-ddb.scan('test', function(err, res) {
+ddb.scan('Restaurantes', {}, function(err, res) {
     if(err) {
       console.log(err);
     } else {
