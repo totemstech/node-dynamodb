@@ -22,16 +22,40 @@
 /**
  * scan.js
  *
- * http://docs.amazonwebservices.com/amazondynamodb/latest/developerguide/API_Scan.html
+ * scan scans the table and returns a flat JSON version of the objects retrieved. 
+ * It automatically converts the returned Amazon JSON format for convenience.
  * 
  * Command: Scan
  * @param table [string] the table name
  * @param options the DynamoDB options for Scan as a dictionary
+ *                attributesToGet         An array of string representing the name
+ *                                        of the attributes to get
+ *                limit                   Maximum number of items to return
+ *                count                   Boolean wether the total number of items
+ *                                        for the scan operation should be returned
+ *                scanFilter              A dictionary mapping attribute names to 
+ *                                        filter objects. Filters objects map a
+ *                                        filter operation (eq, ne, le, lt, ge,
+ *                                        gt, eq, not_null, null, contains, 
+ *                                        not_contains, begins_with, in, between)
+ *                                        to a value or an array of value if 
+ *                                        applicable
+ * @param cb asynchronous callback:
+ *                err:         [Error] if an error occured or null
+ *                res:         [Object] A dictionary containing the following elemnts:
+ *                                      count: number of items in the response
+ *                                      items: the items (transformed from DDB format)
+ *                                      lastEvaluatedKey: primary key where scan stopped
+ *                                      ScannedCount: Total num of items (if count is true)
+ *                cap:         [number] the number of read capacity units consumed
+ *                                      by the operation
  */
 
-var ddb = require('../lib/ddb.js').ddb({ accessKeyId: '',
-secretAccessKey: '' });
+var ddb = require('../lib/ddb.js').ddb({ accessKeyId:     'ACCESS_KEY_ID',
+                                         secretAccessKey: 'SECRET_ACCESS_KEY' });
 
+
+// Simple
 
 ddb.scan('test', {}, function(err, res) {
     if(err) {
@@ -39,7 +63,24 @@ ddb.scan('test', {}, function(err, res) {
     } else {
       console.log(res);
     }
-});
+  });
+
+
+// With Options
+
+var options = { limit: 100,
+                scanFilter { date: { ge: 123012398234 } } };
+
+ddb.scan('test', options, function(err, res) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(res);
+    }
+  });
+
+
+
 
 
 

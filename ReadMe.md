@@ -13,12 +13,16 @@ Supports the following operations:
     CreateTable
     ListTables
     DescribeTable
+    DeleteTable
+    UpdateTable
+
     GetItem
     PutItem
     DeleteItem
 
-Any contribution is welcome! There's still a lot of work to be done on how to nicely
-map the rather complex syntax of DynamoDB optional aguments into node space!
+    Scan
+
+Any contribution is welcome! There's still a lot of work to be done!
 
 ## Usage
 
@@ -64,6 +68,18 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
     ddb.deleteItem('a-table', 'sha', null, {}, function(err, res, cap) {});
 
     ddb.consumedCapacity();
+
+    ddb.scan('test', {}, function(err, res) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log(res);
+        }
+     });
+    // res: { count: 23,
+    //        lastEvaluatedKey: { hash: '3d2d6963' },
+    //        items: [...] };
+
 
 More complete usage can be found in the examples directory
 
