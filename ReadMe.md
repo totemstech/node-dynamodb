@@ -25,8 +25,8 @@ map the rather complex syntax of DynamoDB optional aguments into node space!
     var ddb = require('dynamodb').ddb({ accessKeyId: '',
                                         secretAccessKey: '' });
     
-    ddb.createTable('foo', { hash: ['id', ddb.types.string], 
-                             range: ['time', ddb.types.number] }, 
+    ddb.createTable('foo', { hash: ['id', ddb.schemaTypes().string], 
+                             range: ['time', ddb.schemaTypes().number] }, 
                     {read: 10, write: 10}, function(err, details) {});
     // res: { "CreationDateTime": 1.310506263362E9,
     //        "KeySchema": { "HashKeyElement": { "AttributeName": "AttributeName1",
