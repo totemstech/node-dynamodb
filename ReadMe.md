@@ -69,7 +69,7 @@ More complete usage can be found in the examples directory
 
 ## Contributors
 
-    karlseguin (Karl Seguin)
-    imekinox (Juan Carlos del Valle)
-    phstc (Pablo Cantero)
-    cstivers78 (Chris Stivers)
+    @karlseguin (Karl Seguin)
+    @imekinox (Juan Carlos del Valle)
+    @phstc (Pablo Cantero)
+    @cstivers78 (Chris Stivers)
