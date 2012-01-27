@@ -69,5 +69,6 @@ More complete usage can be found in the examples directory
 
 ## Contributors
 
-    karlseguin (Karl Seguin) [https://github.com/karlseguin]
-    imekinox (Juan Carlos del Valle) [https://github.com/imekinox]
+    karlseguin (Karl Seguin)
+    imekinox (Juan Carlos del Valle)
+    cstivers78 (Chris Stivers)
