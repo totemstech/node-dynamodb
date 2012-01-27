@@ -33,7 +33,7 @@
  *                limit                   Maximum number of items to return
  *                count                   Boolean wether the total number of items
  *                                        for the scan operation should be returned
- *                scanFilter              A dictionary mapping attribute names to 
+ *                filter                  A dictionary mapping attribute names to 
  *                                        filter objects. Filters objects map a
  *                                        filter operation (eq, ne, le, lt, ge,
  *                                        gt, eq, not_null, null, contains, 
@@ -66,16 +66,39 @@ ddb.scan('test', {}, function(err, res) {
   });
 
 
+
 // With Options
 
 var options = { limit: 100,
-                scanFilter { date: { ge: 123012398234 } } };
+                filter : { date: { ge: 123012398234 } } };
 
 ddb.scan('test', options, function(err, res) {
     if(err) {
       console.log(err);
     } else {
       console.log(res);
+    }
+  });
+
+
+var options = { count:true };
+
+ddb.scan('test', options, function(err, res) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(res);      
+    }
+  });
+
+
+var options = { filter : { date: { null: true } } };
+
+ddb.scan('test', options, function(err, res) {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(res);      
     }
   });
 
