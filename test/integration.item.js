@@ -25,6 +25,7 @@ var seq = [
                  next();
                });
            },
+           
            function(next) {
              ddb.getItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
                  if(err)
@@ -34,6 +35,7 @@ var seq = [
                  next();                  
                });              
            },
+
            function(next) {
              ddb.updateItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null,
                             { usr: { value: 'nouser' },
@@ -46,6 +48,7 @@ var seq = [
                               next();                  
                             });              
            },
+
            function(next) {
              ddb.getItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
                  if(err)
@@ -55,6 +58,7 @@ var seq = [
                  next();                  
                });              
            },
+
            function(next) {
              ddb.deleteItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, {returnValues: 'ALL_OLD'}, 
                             function(err, res, cap) {
@@ -65,6 +69,7 @@ var seq = [
                               next();                  
                             });              
            },
+
            function(next) {
              ddb.getItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
                  if(err)
