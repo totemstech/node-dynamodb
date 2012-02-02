@@ -19,6 +19,7 @@ Supports the following operations:
     GetItem
     PutItem
     DeleteItem
+    UpdateItem
 
     Scan
 
@@ -66,6 +67,9 @@ Any contribution is welcome! There's still a lot of work to be done!
     //        lng: ['node', 'c++'] };
 
     ddb.deleteItem('a-table', 'sha', null, {}, function(err, res, cap) {});
+
+    ddb.updateItem('a-table', '3d2d6963', null, { 'usr': { value: 'smthg' } }, {}, 
+                   function(err, res, cap) {});
 
     ddb.consumedCapacity();
 
