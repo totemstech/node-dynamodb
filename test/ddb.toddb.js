@@ -1,5 +1,5 @@
 var assert = require('chai').assert;
-var toDDB = require('../lib/ddb').ddb({accessKeyId : "", secretAccessKey : ""}).toDDB;
+var toDDB = require('../lib/ddb').ddb({accessKeyId: "", secretAccessKey: ""}).toDDB;
 
 suite('toDDB', function(){
     

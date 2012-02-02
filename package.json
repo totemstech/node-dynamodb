@@ -15,7 +15,7 @@
   "dependencies": {
     "fwk": "0.1.x"
   },
-  "devDependencies" {
+  "devDependencies": {
     "chai" : "0.2.4",
     "mocha" : "0.10.x"
   },                  

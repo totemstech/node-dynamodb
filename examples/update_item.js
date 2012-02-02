@@ -34,7 +34,7 @@
  * @param updates the updates to perform as a dictionary
  *                associating attribute names to udpate objects
  *                of the form: { value: XXX, action: 'PUT|ADD|DELETE' }
- *                the possible actions are PUT, ADD (arrays only) or DELETE.
+ *                the possible actions are PUT, ADD or DELETE.
  * @param options the DynamoDB options for PutItem as a dictionary
  *                expected                A dictionary mapping attribute name
  *                                        to expected existence or value [see 
