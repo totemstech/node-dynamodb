@@ -13,10 +13,12 @@
                       "darwin",
                       "freebsd" ],
   "dependencies": {
-    "fwk": "0.1.x",
+    "fwk": "0.1.x"
+  },
+  "devDependencies" {
     "chai" : "0.2.4",
     "mocha" : "0.10.x"
-  },
+  },                  
   "main" : "./lib/ddb",
   "engines" : { "node" : ">=0.6.0" }
 }
