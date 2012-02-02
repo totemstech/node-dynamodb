@@ -87,6 +87,18 @@ Any contribution is welcome! There's still a lot of work to be done!
 
 More complete usage can be found in the examples directory
 
+## Run the Tests
+
+Put in your environment:
+
+    export DYNAMODB_ACCESSKEYID=YOURACCESSKEYID
+    export DYNAMODB_SECRETACCESSKEY=YOURSECRETKEYID
+    export DYNAMODB_TEST_TABLE=test
+
+Make sure you have a `test` table created and available with `sha` as a hash key (string), then run:
+
+    make test
+    
 ## Contributors
 
     @karlseguin (Karl Seguin)
