@@ -1,5 +1,5 @@
 test:
-	./node_modules/.bin/mocha -u tdd
+	node test/toDDB.js
 	node test/integration.item.js
 
 .PHONY: test
