@@ -12,7 +12,11 @@
   "os" :            [ "linux",
                       "darwin",
                       "freebsd" ],
-  "dependencies": { "fwk": "0.1.x" },
+  "dependencies": {
+    "fwk": "0.1.x",
+    "chai" : "0.2.4",
+    "mocha" : "0.10.x"
+  },
   "main" : "./lib/ddb",
   "engines" : { "node" : ">=0.6.0" }
 }
