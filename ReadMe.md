@@ -9,7 +9,7 @@ A DynamoDB driver for Node.js, with:
 Discussion Group: http://groups.google.com/group/node-dynamodb
 
 Supports the following operations:
-   
+
     CreateTable
     ListTables
     DescribeTable
@@ -20,7 +20,7 @@ Supports the following operations:
     PutItem
     DeleteItem
     UpdateItem
-
+    Query
     Scan
 
 Any contribution is welcome! There's still a lot of work to be done!
@@ -29,9 +29,9 @@ Any contribution is welcome! There's still a lot of work to be done!
 
     var ddb = require('dynamodb').ddb({ accessKeyId: '',
                                         secretAccessKey: '' });
-    
-    ddb.createTable('foo', { hash: ['id', ddb.schemaTypes().string], 
-                             range: ['time', ddb.schemaTypes().number] }, 
+
+    ddb.createTable('foo', { hash: ['id', ddb.schemaTypes().string],
+                             range: ['time', ddb.schemaTypes().number] },
                     {read: 10, write: 10}, function(err, details) {});
     // res: { "CreationDateTime": 1.310506263362E9,
     //        "KeySchema": { "HashKeyElement": { "AttributeName": "AttributeName1",
@@ -56,7 +56,7 @@ Any contribution is welcome! There's still a lot of work to be done!
                  sha: '3d2d6963',
                  usr: 'spolu',
                  lng: ['node', 'c++'] };
-    
+
     ddb.putItem('a-table', item, {}, function(err, res, cap) {});
 
     ddb.getItem('a-table', '3d2d6963', null, {}, function(err, res, cap) {});
@@ -68,7 +68,7 @@ Any contribution is welcome! There's still a lot of work to be done!
 
     ddb.deleteItem('a-table', 'sha', null, {}, function(err, res, cap) {});
 
-    ddb.updateItem('a-table', '3d2d6963', null, { 'usr': { value: 'smthg' } }, {}, 
+    ddb.updateItem('a-table', '3d2d6963', null, { 'usr': { value: 'smthg' } }, {},
                    function(err, res, cap) {});
 
     ddb.consumedCapacity();
@@ -84,6 +84,22 @@ Any contribution is welcome! There's still a lot of work to be done!
     //        lastEvaluatedKey: { hash: '3d2d6963' },
     //        items: [...] };
 
+    ddb.query('test', hash_id, null, function(err, result) {...});
+
+    //range query EQ, GT, GE, LT, LE, STARTS_WITH, BETWEEN
+    //BETWEEN is the only one to take 2 values
+    ddb.query('test', hash_id, ['GT', 9000], function(err, result) {...});
+    ddb.query('test', hash_id, ['BETWEEN, 9000, 10000], function(err, result) {...});
+
+    // options:
+    // count: true - only return a count
+    // limit:X - limit to X items
+    // attributesToGet: ['attr1', 'attr2', ...] - the attributes to get
+    // consistentRead: true - force a consistent read
+    // forward: false - get items in reverse order
+    // startAfter: [hash, range] - usually used in conjunction with limit and the LastEvaluatedKey value returned from a previous query operation
+    ddb.query('test', hash_id, null, {options}, function(err, result) {...})
+
 
 More complete usage can be found in the examples directory
 
@@ -98,7 +114,7 @@ Put in your environment:
 Make sure you have a `test` table created and available with `sha` as a hash key (string), then run:
 
     make test
-    
+
 ## Contributors
 
     @karlseguin (Karl Seguin)
