@@ -22,6 +22,7 @@ Supports the following operations:
     UpdateItem
     Query
     Scan
+    BatchGetItem
 
 Any contribution is welcome! There's still a lot of work to be done!
 
@@ -99,6 +100,15 @@ Any contribution is welcome! There's still a lot of work to be done!
     // forward: false - get items in reverse order
     // startAfter: [hash, range] - usually used in conjunction with limit and the LastEvaluatedKey value returned from a previous query operation
     ddb.query('test', hash_id, null, {options}, function(err, result) {...})
+
+    // Use batchGetItem to get multiple items from a single table with only a hash key:
+    ddb.batchGetItem({table: 'test', keys: ['id1', 'id2', 'id3']}, function(err, result) {...});
+    // Use batchGetItem to get multiple items from a single table with a hash key and range key:
+    ddb.batchGetItem({table: 'test', keys: [['id1', 'range1'], ['id2', 'range2']]}, function(err, result) {...});
+    // Use batchGetItem to get multiple items from a multiple tablesrange key:
+    var table1 = {table: 'test1', keys: [['id1', 'range1'], ['id2', 'range2']]};
+    var table2 = {table: 'test2', keys: ['id1', 'id2''], attributesToGet: ['name']};
+    ddb.batchGetItem([table1, table2],function(err, result) {...});
 
 
 More complete usage can be found in the examples directory
