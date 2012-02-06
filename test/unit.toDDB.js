@@ -19,8 +19,29 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-/**
- * Export lib/ddb
- */
+var fwk = require('fwk');
+var assert = require('assert');
 
-module.exports = require('./lib/ddb');
+var objToDDB = require('../lib/ddb').ddb({accessKeyId: "", secretAccessKey: ""}).objToDDB;
+var scToDDB = require('../lib/ddb').ddb({accessKeyId: "", secretAccessKey: ""}).scToDDB;
+
+assert.deepEqual({key : { S : "str"}}, objToDDB({key : "str"}));
+assert.deepEqual({key : { N : "1234"}}, objToDDB({key : 1234}));
+assert.deepEqual({key : { SS : ["foo"]}}, objToDDB({key : ["foo"]}));
+assert.deepEqual({key : { SS : ["foo", "bar"]}}, objToDDB({key : ["foo", "bar"]}));
+assert.deepEqual({key : { NS : ["42"]}}, objToDDB({key : [42]}));
+assert.deepEqual({key : { NS : ["4", "5", "42"]}}, objToDDB({key : [4, 5, 42]}));
+
+var expect = {
+  str : {"S" : "string"},
+  stringSet : { SS : ["foo", "bar"]}
+};
+assert.deepEqual(expect, objToDDB({str : "string", stringSet : ["foo", "bar"]}));
+
+console.log('objToDDB          : ok');
+
+assert.deepEqual({ SS : ["foo"]}, scToDDB(["foo"]));
+assert.deepEqual({ SS : ["foo", "bar"]}, scToDDB(["foo", "bar"]));
+
+console.log('scToDDB           : ok');
+
