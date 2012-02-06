@@ -22,7 +22,6 @@ Supports the following operations:
     UpdateItem
     Query
     Scan
-    BatchGetItem
 
 Any contribution is welcome! There's still a lot of work to be done!
 
@@ -30,6 +29,8 @@ Any contribution is welcome! There's still a lot of work to be done!
 
     var ddb = require('dynamodb').ddb({ accessKeyId: '',
                                         secretAccessKey: '' });
+
+    /* CreateTable */                                   
 
     ddb.createTable('foo', { hash: ['id', ddb.schemaTypes().string],
                              range: ['time', ddb.schemaTypes().number] },
@@ -44,9 +45,13 @@ Any contribution is welcome! There's still a lot of work to be done!
     //        "TableName":"Table1",
     //        "TableStatus":"CREATING" }
 
+    /* ListTables */                                   
+
     ddb.listTables({}, function(err, res) {});
     // res: { LastEvaluatedTableName: 'bar',
               TableNames: ['test','foo','bar'] }
+
+    /* DescribeTable */                                   
 
     ddb.describeTable('a-table', function(err, res) {});
     // res: { ... }
@@ -58,6 +63,8 @@ Any contribution is welcome! There's still a lot of work to be done!
                  usr: 'spolu',
                  lng: ['node', 'c++'] };
 
+    /* PutItem */                                   
+
     ddb.putItem('a-table', item, {}, function(err, res, cap) {});
 
     ddb.getItem('a-table', '3d2d6963', null, {}, function(err, res, cap) {});
@@ -67,12 +74,25 @@ Any contribution is welcome! There's still a lot of work to be done!
     //        usr: 'spolu',
     //        lng: ['node', 'c++'] };
 
+    /* DeleteItem */          
+
     ddb.deleteItem('a-table', 'sha', null, {}, function(err, res, cap) {});
+
+    /* UpdateItem */          
 
     ddb.updateItem('a-table', '3d2d6963', null, { 'usr': { value: 'smthg' } }, {},
                    function(err, res, cap) {});
 
     ddb.consumedCapacity();
+
+    /* Query */          
+
+    ddb.query('test', '3d2d6963', function(err, res, cap) {...});
+    // res: { count: 23,
+    //        lastEvaluatedKey: { hash: '3d2d6963' },
+    //        items: [...] };
+    
+    /* Scan */          
 
     ddb.scan('test', {}, function(err, res) {
         if(err) {
@@ -85,30 +105,6 @@ Any contribution is welcome! There's still a lot of work to be done!
     //        lastEvaluatedKey: { hash: '3d2d6963' },
     //        items: [...] };
 
-    ddb.query('test', hash_id, null, function(err, result) {...});
-
-    //range query EQ, GT, GE, LT, LE, STARTS_WITH, BETWEEN
-    //BETWEEN is the only one to take 2 values
-    ddb.query('test', hash_id, ['GT', 9000], function(err, result) {...});
-    ddb.query('test', hash_id, ['BETWEEN, 9000, 10000], function(err, result) {...});
-
-    // options:
-    // count: true - only return a count
-    // limit:X - limit to X items
-    // attributesToGet: ['attr1', 'attr2', ...] - the attributes to get
-    // consistentRead: true - force a consistent read
-    // forward: false - get items in reverse order
-    // startAfter: [hash, range] - usually used in conjunction with limit and the LastEvaluatedKey value returned from a previous query operation
-    ddb.query('test', hash_id, null, {options}, function(err, result) {...})
-
-    // Use batchGetItem to get multiple items from a single table with only a hash key:
-    ddb.batchGetItem({table: 'test', keys: ['id1', 'id2', 'id3']}, function(err, result) {...});
-    // Use batchGetItem to get multiple items from a single table with a hash key and range key:
-    ddb.batchGetItem({table: 'test', keys: [['id1', 'range1'], ['id2', 'range2']]}, function(err, result) {...});
-    // Use batchGetItem to get multiple items from a multiple tablesrange key:
-    var table1 = {table: 'test1', keys: [['id1', 'range1'], ['id2', 'range2']]};
-    var table2 = {table: 'test2', keys: ['id1', 'id2''], attributesToGet: ['name']};
-    ddb.batchGetItem([table1, table2],function(err, result) {...});
 
 
 More complete usage can be found in the examples directory
