@@ -31,6 +31,9 @@ assert.deepEqual({key : { SS : ["foo"]}}, objToDDB({key : ["foo"]}));
 assert.deepEqual({key : { SS : ["foo", "bar"]}}, objToDDB({key : ["foo", "bar"]}));
 assert.deepEqual({key : { NS : ["42"]}}, objToDDB({key : [42]}));
 assert.deepEqual({key : { NS : ["4", "5", "42"]}}, objToDDB({key : [4, 5, 42]}));
+assert.deepEqual({}, objToDDB({key : null}));
+assert.deepEqual({"key1":{"S":"str"}}, objToDDB({key1:"str", key : null}));
+assert.deepEqual({"key1":{"N":"1234"}}, objToDDB({key1:1234, key : null}));
 
 var expect = {
   str : {"S" : "string"},
