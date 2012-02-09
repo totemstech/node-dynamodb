@@ -36,10 +36,15 @@ var item = { date: (new Date).getTime(),
 var updt = { sha: '3d2d696', 
              usr: 'nouser', 
              val: 8 };
+var ritem = { date: (new Date).getTime(),
+             hash: 'test',
+             range: '3d2d696',
+             usr: 'spolu',
+             val: 4 };
 
 var seq = [
            function(next) {
-             ddb.putItem(cfg['DYNAMODB_TEST_TABLE'], item, {}, function(err, res, cap) {
+             ddb.putItem(cfg['DYNAMODB_TEST_TABLE1'], item, {}, function(err, res, cap) {
                  if(err)
                    console.log(err);
                  assert.equal(err, null, 'putItem error occured');    
@@ -48,7 +53,7 @@ var seq = [
            },
            
            function(next) {
-             ddb.getItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
+             ddb.getItem(cfg['DYNAMODB_TEST_TABLE1'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
                  if(err)
                    console.log(err);
                  assert.equal(err, null, 'getItem error occured');
@@ -58,7 +63,7 @@ var seq = [
            },
 
            function(next) {
-             ddb.updateItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null,
+             ddb.updateItem(cfg['DYNAMODB_TEST_TABLE1'], '3d2d696', null,
                             { usr: { value: 'nouser' },
                               date: { action: 'DELETE' },
                               val: { value: 4, action: 'ADD'} },
@@ -71,7 +76,7 @@ var seq = [
            },
 
            function(next) {
-             ddb.getItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
+             ddb.getItem(cfg['DYNAMODB_TEST_TABLE1'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
                  if(err)
                    console.log(err);
                  assert.equal(err, null, 'getItem error occured');
@@ -81,7 +86,7 @@ var seq = [
            },
 
            function(next) {
-             ddb.deleteItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, {returnValues: 'ALL_OLD'}, 
+             ddb.deleteItem(cfg['DYNAMODB_TEST_TABLE1'], '3d2d696', null, {returnValues: 'ALL_OLD'}, 
                             function(err, res, cap) {
                               if(err)
                                 console.log(err);
@@ -92,14 +97,34 @@ var seq = [
            },
 
            function(next) {
-             ddb.getItem(cfg['DYNAMODB_TEST_TABLE'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
+             ddb.getItem(cfg['DYNAMODB_TEST_TABLE1'], '3d2d696', null, { consistentRead: true }, function(err, res, cap) {
                  if(err)
                    console.log(err);
                  assert.equal(err, null, 'getItem error occured');
                  assert.equal(res, undefined, 'getItem error occured');
                  next();                  
                });              
-           }
+           },
+
+           function(next) {
+             ddb.putItem(cfg['DYNAMODB_TEST_TABLE2'], ritem, {}, function(err, res, cap) {
+                 if(err)
+                   console.log(err);
+                 assert.equal(err, null, 'putItem error occured');    
+                 next();
+               });
+           },
+           
+           function(next) {
+             ddb.getItem(cfg['DYNAMODB_TEST_TABLE2'], 'test', '3d2d696', { consistentRead: true }, function(err, res, cap) {
+                 if(err)
+                   console.log(err);
+                 assert.equal(err, null, 'getItem error occured');
+                 assert.deepEqual(res, ritem, 'getitem item mismatch');                  
+                 next();                  
+               });              
+           },
+
            
            ];
 
