@@ -1,0 +1,20 @@
+{
+  "name": "dynamodb",
+  "version": "0.1.18",
+  "description": "Simple DynamoDB Library for Node.js",
+  "keywords": ["dynamo", "node", "db", "aws", "amazon"],
+  "homepage": "https://github.com/spolu/node-dynamodb",
+  "author": { "name": "Stanislas Polu",
+              "email": "stan@teleportd.com",
+	      "url": "http://twitter.com/spolu" },
+  "repository" :    { "type" :  "git",
+                      "url" :   "http://github.com/spolu/node-dynamodb.git" },
+  "os" :            [ "linux",
+                      "darwin",
+                      "freebsd" ],
+  "dependencies": {
+    "fwk": "0.1.x"
+  },
+  "main" : "./lib/ddb",
+  "engines" : { "node" : ">=0.6.0" }
+}

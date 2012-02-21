@@ -19,8 +19,12 @@
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-/**
- * Export lib/ddb
- */
+var fwk = require('fwk');
+var config = fwk.baseConfig(); 
 
-module.exports = require('./lib/ddb');
+config['DYNAMODB_ACCESSKEYID']     = 'REPLACE_IN_ENV_OR_ARGS';
+config['DYNAMODB_SECRETACCESSKEY'] = 'REPLACE_IN_ENV_OR_ARGS';
+config['DYNAMODB_TEST_TABLE1']     = 'REPLACE_IN_ENV_OR_ARGS';
+config['DYNAMODB_TEST_TABLE2']     = 'REPLACE_IN_ENV_OR_ARGS';
+
+exports.config = config;

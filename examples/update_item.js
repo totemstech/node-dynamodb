@@ -20,15 +20,21 @@
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 /**
- * put_item.js
+ * update_item.js
  * 
- * putItem expects a dictionary (item) containing only strings and numbers
- * This object is automatically converted into the expxected Amazon JSON
- * format for convenience.
+ * updateItem expects a ditionary of updates associating attribute names
+ * to objects of the form { value: XXX, action: 'PUT|ADD|DELETE' }
+ * The value part of the update is automatically converted into the Amazon
+ * JSON format for convenience
  *
- * Command: PutItem
+ * Command: UpdateItem
  * @param table [string] the table name
- * @param item the item to put (string/number/string array/number array dictionary)
+ * @param hash  [string|number] the hashKey
+ * @param range [string|number] the optional rangeKey
+ * @param updates the updates to perform as a dictionary
+ *                associating attribute names to udpate objects
+ *                of the form: { value: XXX, action: 'PUT|ADD|DELETE' }
+ *                the possible actions are PUT, ADD or DELETE.
  * @param options the DynamoDB options for PutItem as a dictionary
  *                expected                A dictionary mapping attribute name
  *                                        to expected existence or value [see 
@@ -54,40 +60,38 @@
 var ddb = require('../lib/ddb.js').ddb({ accessKeyId:     'ACCESS_KEY_ID',
                                          secretAccessKey: 'SECRET_ACCESS_KEY' });
 
-var item1 = { date: (new Date).getTime(),
-              sha: '3d2d69633ffa5368c7971cf15c91d2eb',
-              usr: 'spolu',
-              val: [5, 6, 7] };
 
 // Simple
 
-ddb.putItem('test', item1, {}, function(err, res, cap) {
-    if(err)
-      console.log(err);
-    else {
-      console.log('PutItem: ' + cap);
-      console.log(res);
-    }
-  });
+ddb.updateItem('test', '3d2d69', null, { 'usr': { value: 'dummy' } }, {}, 
+               function(err, res, cap) {
+                 if(err)
+                   console.log(err);
+                 else {
+                   console.log('UpdateItem: ' + cap);
+                   console.log(res);
+                 }
+               });
 
 
-// With Options
+ddb.updateItem('test', '3d2d69', null, { 'usr': { action: 'DELETE' } }, {}, 
+               function(err, res, cap) {
+                 if(err)
+                   console.log(err);
+                 else {
+                   console.log('UpdateItem: ' + cap);
+                   console.log(res);
+                 }
+               });
 
-var item2 = { score: 304,
-              date: (new Date).getTime(),
-              sha: '3d2d69633ffa5368c7971cf15c91d2eb',
-              usr: 'spolu',
-              lng: ['node', 'c++'] };
+ddb.updateItem('test', '3d2d69', null, { 'usr': { value: 'spolu', action: 'PUTT' } }, {}, 
+               function(err, res, cap) {
+                 if(err)
+                   console.log(err);
+                 else {
+                   console.log('UpdateItem: ' + cap);
+                   console.log(res);
+                 }
+               });
 
-var options = { expected: { score: { exists: false },
-                            usr: { value: 'spolu', exists: true } },
-                returnValues: 'ALL_OLD' };
-
-ddb.putItem('test', item2, options, function(err, res, cap) {
-    if(err)
-      console.log(err);
-    else {
-      console.log('PutItem: ' + cap);
-      console.log(res);
-    }
-  });
+// see put_item.js for use of options
