@@ -16,5 +16,5 @@
     "fwk": "0.1.x"
   },
   "main" : "./lib/ddb",
-  "engines" : { "node" : ">=0.6.0" }
+  "engines" : { "node" : ">=0.4.0" }
 }
