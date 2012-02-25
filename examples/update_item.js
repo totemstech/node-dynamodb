@@ -84,7 +84,7 @@ ddb.updateItem('test', '3d2d69', null, { 'usr': { action: 'DELETE' } }, {},
                  }
                });
 
-ddb.updateItem('test', '3d2d69', null, { 'usr': { value: 'spolu', action: 'PUTT' } }, {}, 
+ddb.updateItem('test', '3d2d69', null, { 'usr': { value: 'spolu', action: 'PUT' } }, {}, 
                function(err, res, cap) {
                  if(err)
                    console.log(err);
