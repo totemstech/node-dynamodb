@@ -122,3 +122,4 @@ Make sure you have a `test` table created and available with `sha` as a hash key
     @cstivers78 (Chris Stivers)
     @garo (Juho Mäkinen)
     @paultax
+    @alexbosworth (Alex Bosworth)
