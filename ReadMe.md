@@ -114,6 +114,10 @@ Make sure you have a `test` table created and available with `sha` as a hash key
 
     make test
 
+## License
+
+Distributed under the MIT License.
+
 ## Contributors
 
     @karlseguin (Karl Seguin)
