@@ -127,3 +127,4 @@ Distributed under the MIT License.
     @garo (Juho Mäkinen)
     @paultax
     @alexbosworth (Alex Bosworth)
+    @jimbly (Jimb Esser)
