@@ -104,27 +104,7 @@ var seq = [
                  assert.equal(res, undefined, 'getItem error occured');
                  next();                  
                });              
-           },
-
-           function(next) {
-             ddb.putItem(cfg['DYNAMODB_TEST_TABLE2'], ritem, {}, function(err, res, cap) {
-                 if(err)
-                   console.log(err);
-                 assert.equal(err, null, 'putItem error occured');    
-                 next();
-               });
-           },
-           
-           function(next) {
-             ddb.getItem(cfg['DYNAMODB_TEST_TABLE2'], 'test', '3d2d696', { consistentRead: true }, function(err, res, cap) {
-                 if(err)
-                   console.log(err);
-                 assert.equal(err, null, 'getItem error occured');
-                 assert.deepEqual(res, ritem, 'getitem item mismatch');                  
-                 next();                  
-               });              
-           },
-
+           }
            
            ];
 
