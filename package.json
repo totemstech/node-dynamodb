@@ -9,9 +9,15 @@
 	      "url": "http://twitter.com/spolu" },
   "repository" :    { "type" :  "git",
                       "url" :   "https://github.com/teleportd/node-dynamodb.git" },
-  "os" :            [ "linux",
-                      "darwin",
-                      "freebsd" ],
+  "contributors" : [ "Karl Seguin",
+                     "Juan Carlos del Valle",
+                     "Pablo Cantero",
+                     "Chris Stivers",
+                     "Juho Mäkinen",
+                     "@paultax",
+                     "Alex Bosworth",
+                     "Jimb Esser",
+                     "Anthony Moi" ],
   "dependencies": {
     "fwk": "0.1.x"
   },
