@@ -155,3 +155,4 @@ Distributed under the MIT License.
     @alexbosworth (Alex Bosworth)
     @jimbly (Jimb Esser)
     @n1t0 (Anthony Moi)
+    @krasin
