@@ -151,7 +151,7 @@ Distributed under the MIT License.
     @phstc (Pablo Cantero)
     @cstivers78 (Chris Stivers)
     @garo (Juho Mäkinen)
-    @paultax
+    @tax (Paul Tax)
     @alexbosworth (Alex Bosworth)
     @jimbly (Jimb Esser)
     @n1t0 (Anthony Moi)
