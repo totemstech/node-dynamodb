@@ -4,6 +4,9 @@ unit:
 integration:
 	node test/integration.item.js
 
-test: unit integration
+batch:
+	node test/batch.js
+
+test: unit integration batch
 
 .PHONY: test
