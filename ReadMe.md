@@ -76,6 +76,32 @@ Discussion Group: http://groups.google.com/group/node-dynamodb
 
     ddb.consumedCapacity();
 
+### BatchGetItem
+
+    ddb.batchGetItem({'table': { keys: ['foo', 'bar'] }}, function(err, res) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log(res);
+        }
+     });
+    
+    // res: { ConsumedCapacityUnits: 1.5,
+              items: [...] };
+
+### BatchWriteItem
+    
+    //ddb.batchWriteItem(PutRequest, DeleteRequest, cb)
+    ddb.batchWriteItem({'table': [item1, item2]}, {'table': ['foo', 'bar']}, function(err, res) {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log(res);
+        }
+     });
+    
+    // res: { UnprocessedItems: { ... } };
+
 ### Query          
 
     ddb.query('test', '3d2d6963', function(err, res, cap) {...});
@@ -108,11 +134,15 @@ Put in your environment:
 
     export DYNAMODB_ACCESSKEYID=YOURACCESSKEYID
     export DYNAMODB_SECRETACCESSKEY=YOURSECRETKEYID
-    export DYNAMODB_TEST_TABLE=test
+    export DYNAMODB_TEST_TABLE1=test
 
 Make sure you have a `test` table created and available with `sha` as a hash key (string), then run:
 
     make test
+
+## License
+
+Distributed under the MIT License.
 
 ## Contributors
 
@@ -121,4 +151,8 @@ Make sure you have a `test` table created and available with `sha` as a hash key
     @phstc (Pablo Cantero)
     @cstivers78 (Chris Stivers)
     @garo (Juho Mäkinen)
-    @paultax
+    @tax (Paul Tax)
+    @alexbosworth (Alex Bosworth)
+    @jimbly (Jimb Esser)
+    @n1t0 (Anthony Moi)
+    @krasin
