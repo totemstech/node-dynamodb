@@ -15,6 +15,16 @@ Discussion Group: http://groups.google.com/group/node-dynamodb
     var ddb = require('dynamodb').ddb({ accessKeyId: '',
                                         secretAccessKey: '' });
 
+Available options for the constructor are the following:
+
+- `accessKeyId`: the AWS AccessKeyId to use
+- `secretAccessKey`: the AWS SecretAccessKey associated
+- `endpoint`: the Region endpoint to use (defaults to: `dynamodb.us-east-1.amazonaws.com`)
+- `agent`: The NodeJS http.Agent to use (defaults to: `undefined`)
+- `sessionToken`: forced temporary session credential (defaults to: `undefined`)
+- `sessionExpires`: forced temeporary session credential (defaults to: `undefined`)
+
+
 ### CreateTable
 
     ddb.createTable('foo', { hash: ['id', ddb.schemaTypes().string],
@@ -104,7 +114,7 @@ Discussion Group: http://groups.google.com/group/node-dynamodb
 
 ### Query          
 
-    ddb.query('test', '3d2d6963', function(err, res, cap) {...});
+    ddb.query('test', '3d2d6963', {}, function(err, res, cap) {...});
     
     // res: { count: 23,
     //        lastEvaluatedKey: { hash: '3d2d6963' },
