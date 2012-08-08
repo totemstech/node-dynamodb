@@ -166,3 +166,4 @@ Distributed under the MIT License.
     @jimbly (Jimb Esser)
     @n1t0 (Anthony Moi)
     @krasin
+    @aws-ew-dev
