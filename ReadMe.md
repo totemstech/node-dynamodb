@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/teleportd/node-dynamodb.png)](http://travis-ci.org/teleportd/node-dynamodb)
 ## Basics
 
 A Simple, efficient and complete DynamoDB driver for Node.js, with:
