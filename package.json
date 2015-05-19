@@ -4,6 +4,9 @@
   "description": "Simple DynamoDB Library for Node.js",
   "keywords": ["dynamo", "node", "db", "aws", "amazon"],
   "homepage": "https://github.com/teleportd/node-dynamodb",
+  "scripts": {
+    "test": "make test"
+  },
   "author": { "name": "Stanislas Polu",
               "email": "stan@teleportd.com",
 	      "url": "http://twitter.com/spolu" },
