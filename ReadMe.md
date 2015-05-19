@@ -30,7 +30,7 @@ Available options for the constructor are the following:
     ddb.createTable('foo', { hash: ['id', ddb.schemaTypes().string],
                              range: ['time', ddb.schemaTypes().number] },
                     {read: 10, write: 10}, function(err, details) {});
-                    
+
     // res: { "CreationDateTime": 1.310506263362E9,
     //        "KeySchema": { "HashKeyElement": { "AttributeName": "AttributeName1",
     //                                           "AttributeType": "S"},
@@ -41,10 +41,10 @@ Available options for the constructor are the following:
     //        "TableName":"Table1",
     //        "TableStatus":"CREATING" }
 
-### ListTables 
+### ListTables
 
     ddb.listTables({}, function(err, res) {});
-    
+
     // res: { LastEvaluatedTableName: 'bar',
               TableNames: ['test','foo','bar'] }
 
@@ -68,18 +68,18 @@ Available options for the constructor are the following:
 ### GetItem
 
     ddb.getItem('a-table', '3d2d6963', null, {}, function(err, res, cap) {});
- 
+
     // res: { score: 304,
     //        date: 123012398234,
     //        sha: '3d2d6963',
     //        usr: 'spolu',
     //        lng: ['node', 'c++'] };
-    
-### DeleteItem 
+
+### DeleteItem
 
     ddb.deleteItem('a-table', 'sha', null, {}, function(err, res, cap) {});
-    
-### UpdateItem 
+
+### UpdateItem
 
     ddb.updateItem('a-table', '3d2d6963', null, { 'usr': { value: 'smthg' } }, {},
                    function(err, res, cap) {});
@@ -95,12 +95,12 @@ Available options for the constructor are the following:
           console.log(res);
         }
      });
-    
+
     // res: { ConsumedCapacityUnits: 1.5,
               items: [...] };
 
 ### BatchWriteItem
-    
+
     //ddb.batchWriteItem(PutRequest, DeleteRequest, cb)
     ddb.batchWriteItem({'table': [item1, item2]}, {'table': ['foo', 'bar']}, function(err, res) {
         if(err) {
@@ -109,13 +109,13 @@ Available options for the constructor are the following:
           console.log(res);
         }
      });
-    
+
     // res: { UnprocessedItems: { ... } };
 
-### Query          
+### Query
 
     ddb.query('test', '3d2d6963', {}, function(err, res, cap) {...});
-    
+
     // res: { count: 23,
     //        lastEvaluatedKey: { hash: '3d2d6963' },
     //        items: [...] };
@@ -129,7 +129,7 @@ Available options for the constructor are the following:
           console.log(res);
         }
      });
-    
+
     // res: { count: 23,
     //        lastEvaluatedKey: { hash: '3d2d6963' },
     //        items: [...] };
@@ -146,9 +146,13 @@ Put in your environment:
     export DYNAMODB_SECRETACCESSKEY=YOURSECRETKEYID
     export DYNAMODB_TEST_TABLE1=test
 
-Make sure you have a `test` table created and available with `sha` as a hash key (string), then run:
+Make sure you have a `test` table created and available with `sha` as a hash key (string). Make sure to select `Hash` as the `Primary Key Type`. Then run:
 
     make test
+
+If you are getting one of these errors:
+
+* `User: ... is not authorized to perform: dynamodb:PutItem on resource` you need to add `AmazonDynamoDBFullAccess` to the user in [IAM policy editor](https://console.aws.amazon.com/iam/home).
 
 ## License
 
