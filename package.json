@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/teleportd/node-dynamodb.git"
   },
+  "license": "MIT",
   "contributors": [
     "Karl Seguin",
     "Juan Carlos del Valle",
